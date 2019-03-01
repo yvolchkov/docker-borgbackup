@@ -1,0 +1,18 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+version: "3"
+services:
+  backup_share:
+    image: yvolchkov/borgbackup
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./data:/data
+      - ssh_host_keys:/root/ssh_host_keys
+    restart: always
+    ports:
+      - "2865:22"
+
+volumes:
+  ssh_host_keys:
