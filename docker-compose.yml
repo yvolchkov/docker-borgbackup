@@ -8,8 +8,11 @@ services:
       context: .
       dockerfile: ./Dockerfile
     volumes:
-      - ./data:/data
+      - ${HOST_DATA}:/data
+      - ./conf:/opt/conf:ro
       - ssh_host_keys:/root/ssh_host_keys
+    environment:
+      - __USERS_LIST=${USERS}
     restart: always
     ports:
       - "2865:22"
