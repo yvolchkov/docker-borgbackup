@@ -1,0 +1,7 @@
+.*
+*.orig
+*~
+\#*#
+\conf
+
+!.gitignore
